@@ -1,6 +1,7 @@
 # Create "/tmp/testfile" if it doesn't exist.
 
 import "example/*"
+import "package-install/*"
 
 class test_class {
     file { "/tmp/testfile":
@@ -15,4 +16,5 @@ class test_class {
 node car {
     include test_class
     include example
+    include install
 }
