@@ -1,7 +1,8 @@
 # Create "/tmp/testfile" if it doesn't exist.
 
-import "example/*"
+import "file-create/*"
 import "package-install/*"
+import "nginx/*"
 
 class test_class {
     file { "/tmp/testfile":
@@ -17,4 +18,5 @@ node car {
     include test_class
     include example
     include install
+    include nginx-run
 }
