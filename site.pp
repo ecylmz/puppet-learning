@@ -1,13 +1,13 @@
-# Create "/tmp/testfile" if it doesn't exist.
-
 import "file-create/*"
 import "package-install/*"
 import "nginx/*"
+import "configuration/*"
+
 
 class test_class {
     file { "/tmp/testfile":
         ensure => present,
-	mode   => 600,
+	mode   => 644,
 	owner  => root,
 	group  => root
     }
@@ -19,4 +19,5 @@ node car {
     include example
     include install
     include nginx-run
+    include configuration
 }
