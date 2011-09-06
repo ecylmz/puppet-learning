@@ -1,1 +1,64 @@
-hmmmmmm
+server {
+        listen 80;
+        server_name .foo.bil.omu.edu.tr;
+
+
+#        include base.conf;
+
+#        location / {
+#                expires 30d;
+#                access_log off;
+#
+#                set $service ""; # boş değer ver aksi halde nginx info basıyor
+#                if ($request_uri ~* ^(/[^/]+)/.*$) {
+#                        set $service $1;
+#                }
+#
+#                if (!-f $document_root/$service/f3.php) {
+#                        break;
+#                }
+#                index f3.php index.php index.html index.htm;
+#                try_files $uri $uri/ $service/f3.php;
+#        }
+
+        location /a/ {
+                expires 30d;
+                access_log off;
+                try_files $uri $uri/ /a/index.php?q=$uri&$args;
+        }
+
+}
+
+server {
+        listen 443;
+        server_name .foo.bil.omu.edu.tr;
+
+#        include base.conf;
+
+#        ssl on;
+#        ssl_certificate /etc/ssl/private/star_omu_edu_tr.crt;
+#        ssl_certificate_key /etc/ssl/private/star_omu_edu_tr.key;
+
+#        location / {
+#                expires 30d;
+#                access_log off;
+#
+#                set $service ""; # boş değer ver aksi halde nginx info basıyor
+#                if ($request_uri ~* ^(/[^/]+)/.*$) {
+#                        set $service $1;
+#                }
+#
+#                if (!-f $document_root/$service/f3.php) {
+#                        break;
+#                }
+#                index f3.php index.php index.html index.htm;
+#                try_files $uri $uri/ $service/f3.php;
+#        }
+
+        location /a/ {
+                expires 30d;
+                access_log off;
+                try_files $uri $uri/ /a/index.php?q=$uri&$args;
+        }
+
+}

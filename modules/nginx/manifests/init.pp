@@ -8,7 +8,8 @@ class nginx ($domain = undef, $enable = true, $ensure = running) {
 	}
 
 	file { "${conf_file}":
-		source => "puppet:///nginx/${domain}"
+		source => "puppet:///nginx/${domain}",
+		notify => Service[nginx]
 	}
 
 	file { "${conf_file_enabled}":
@@ -17,7 +18,8 @@ class nginx ($domain = undef, $enable = true, $ensure = running) {
 	}
 
 	service { "nginx":
-		ensure    => $ensure,
-		subscribe => [Package["nginx"], File["${conf_file_enable}"]]
+		ensure     => $ensure,
+		enable     => $enable,
+		subscribe  => [Package["nginx"], File["${conf_file_enable}"]]
 	}
 }

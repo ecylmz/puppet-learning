@@ -1,6 +1,5 @@
 import "file-create/*"
 import "package-install/*"
-# import "nginx/*"
 import "configuration/*"
 import "nginx"
 
@@ -18,12 +17,16 @@ node car {
     include test_class
     include example
     include install
-#    include nginx-run
     include configuration
     class { "nginx":
-        enable => false,
-        ensure => stopped,
+        enable => true,
+        ensure => true,
         domain => "foo.bil.omu.edu.tr"
     }
-
+    class { "wordpress":
+        wpdir  => "/opt/wp",
+        dbuser => "foo",
+        dbname => "bar",
+        dbpass => "baz"
+    }
 }
