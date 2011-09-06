@@ -1,4 +1,4 @@
-class wordpress ($wpdir, $dbname, $dbuser, $dbpass ) {
+class wordpress ($wpdir, $dbname, $dbuser, $dbpass, $domain ) {
 
 	file {
 		"${wpdir}":
@@ -14,6 +14,14 @@ class wordpress ($wpdir, $dbname, $dbuser, $dbpass ) {
 			ensure  => directory,
 			mode    => 0755,
 			owner   => www-data,
-			group   => www-data
+			group   => www-data;
+
+		"/srv/www/${domain}":
+			ensure  => directory,
+			recurse => true;
+
+		"/srv/www/${domain}/site":
+			ensure => link,
+			target => "${wpdir}"
 	}
 }

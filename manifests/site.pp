@@ -27,6 +27,7 @@ node car {
         wpdir  => "/opt/wp",
         dbuser => "foo",
         dbname => "bar",
-        dbpass => "baz"
+        dbpass => "baz",
+        domain => "foo.bil.omu.edu.tr"
     }
 }
